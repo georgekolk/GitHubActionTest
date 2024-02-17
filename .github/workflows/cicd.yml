@@ -29,8 +29,10 @@ jobs:
     - name: env mapping prod
       if: ${{ (github.event.inputs.destination == 'prod' || (github.head_ref || github.ref_name) == 'dev' ) }}
       run: |
-        echo "${{ env.DEVAUTORUN }}"
+        echo "${{ env.DEV_AUTO_RUN }}"
+        echo ${{ github.head_ref }} ${{ github.ref_name }}
         echo "${{ github.event.inputs.destination }}"
+        echo destination prod or github.head_ref github.ref_name dev
 
     - name: show env
       run: |
