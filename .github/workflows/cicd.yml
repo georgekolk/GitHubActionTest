@@ -14,7 +14,7 @@ on:
   push:
     branches: [ "dev" ]
     inputs:
-      destination:
+      destinations:
         required: false
         type: choice
         description: Where to deploy  
@@ -32,5 +32,5 @@ jobs:
       uses: actions/checkout@v3
 
     - name: show env
-      run:  echo "${{ github.event.inputs.destination }}"
+      run:  echo "${{ github.event.inputs.destinations }}"
 
