@@ -16,8 +16,8 @@ env:
 
   push:
     branches: [ "dev" ]
-    env: 
-      DEV_AUTO_RUN: 'true'
+      #    env: 
+      #      DEV_AUTO_RUN: 'true'
 
 jobs:
   build_back:
