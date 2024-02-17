@@ -11,6 +11,17 @@ on:
         options:
           - stage
           - prod
+  push:
+    branches: [ "dev" ]
+    inputs:
+      destination:
+        required: false
+        type: choice
+        description: Where to deploy  
+        default: 'stage'
+        options:
+          - stage
+          - prod
 
 jobs:
   build_back:
@@ -21,5 +32,5 @@ jobs:
       uses: actions/checkout@v3
 
     - name: show env
-      run:  echo ${{ github.event.inputs.destination }}
+      run:  echo "${{ github.event.inputs.destination }}"
 
