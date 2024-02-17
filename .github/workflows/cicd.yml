@@ -7,7 +7,7 @@ on:
       - dev
     inputs:
       destination:
-        required: true
+        required: false
         type: choice
         description: Where to deploy
         default: 'stage'
