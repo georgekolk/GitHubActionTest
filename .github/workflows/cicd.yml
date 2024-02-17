@@ -13,7 +13,8 @@ on:
           - prod
   push:
     branches: [ "dev" ]
-    env: devautorun: true 
+    env: 
+      devautorun: true 
 
 jobs:
   build_back:
