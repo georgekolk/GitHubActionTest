@@ -35,6 +35,6 @@ jobs:
 
     - name: show env
       run: |
-        echo "${{ env.DEVAUTORUN }}"
+        echo "$DEVAUTORUN"
         echo "${{ github.event.inputs.destination }}"
 
