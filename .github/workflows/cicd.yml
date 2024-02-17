@@ -11,6 +11,8 @@ on:
         options:
           - stage
           - prod
+    env:
+      DEVAUTORUN: 'false'
 
   push:
     branches: [ "dev" ]
@@ -25,8 +27,13 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
 
-    - name: Env mapping prod
+    - name: env mapping prod
       if: ${{ (github.event.inputs.destination == 'prod' || env.DEVAUTORUN == 'true') }}
+      run: |
+        echo "${{ env.DEVAUTORUN }}"
+        echo "${{ github.event.inputs.destination }}"
+
+    - name: show env
       run: |
         echo "${{ env.DEVAUTORUN }}"
         echo "${{ github.event.inputs.destination }}"
