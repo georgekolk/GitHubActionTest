@@ -21,7 +21,7 @@ on:
           - stage
           - prod
 
-        
+  
 
 jobs:
   build_back:
@@ -32,5 +32,5 @@ jobs:
       uses: actions/checkout@v3
 
     - name: show env
-      run: env
+      run: echo "${{ github.event.inputs.destination }}"
 
