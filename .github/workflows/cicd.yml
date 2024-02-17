@@ -11,13 +11,13 @@ on:
         options:
           - stage
           - prod
-    env:
-      DEVAUTORUN: 'false'
+env:
+  DEV_AUTO_RUN: 'false'
 
   push:
     branches: [ "dev" ]
-    env: 
-      DEVAUTORUN: 'true'
+env: 
+  DEV_AUTO_RUN: 'true'
 
 jobs:
   build_back:
@@ -28,15 +28,15 @@ jobs:
       uses: actions/checkout@v3
 
     - name: env mapping prod
-      if: ${{ (github.event.inputs.destination == 'prod' || env.DEVAUTORUN == 'true') }}
+      if: ${{ (github.event.inputs.destination == 'prod' || env.DEV_AUTO_RUN == 'true') }}
       run: |
         echo "${{ env.DEVAUTORUN }}"
         echo "${{ github.event.inputs.destination }}"
 
     - name: show env
       run: |
-        echo "$DEVAUTORUN"
+        echo "$DEV_AUTO_RUN"
         echo "${{ github.event.inputs.destination }}"
-        echo $DEVAUTORUN
-        echo ${{ env.DEVAUTORUN }}
+        echo $DEV_AUTO_RUN
+        echo ${{ env.DEV_AUTO_RUN }}
 
