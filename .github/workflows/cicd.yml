@@ -11,8 +11,8 @@ on:
         options:
           - stage
           - prod
-    env:
-      DEV_AUTO_RUN: 'false'
+env:
+  DEV_AUTO_RUN: 'false'
 
   push:
     branches: [ "dev" ]
