@@ -1,0 +1,36 @@
+name: dev cicd pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      destination:
+        required: true
+        type: choice
+        description: Where to deploy
+        default: 'stage'
+        options:
+          - stage
+          - prod
+  push:
+    branches: [ "dev" ]
+    inputs:
+      destination:
+        required: false
+        default: 'stage'
+        options:
+          - stage
+          - prod
+
+        
+
+jobs:
+  build_back:
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v3
+
+    - name: show env
+      run: env
+
