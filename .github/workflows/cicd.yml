@@ -36,10 +36,8 @@ jobs:
 
     - name: show env
       run: |
-        echo "$DEV_AUTO_RUN"
-        echo "${{ github.event.inputs.destination }}"
-        echo $DEV_AUTO_RUN
-        echo ${{ env.DEV_AUTO_RUN }}
-        echo ${{ github.head_ref }} ${{ github.ref_name }} 
+        echo ${{ github.head_ref }} github.head_ref
+        echo ${{ github.ref_name }} github.ref_name on pull_request
         echo ${{ (github.head_ref || github.ref_name) }}
+
         
