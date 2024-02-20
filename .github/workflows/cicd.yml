@@ -4,24 +4,19 @@ on:
   workflow_dispatch:
     inputs:
       destination:
-        required: true
+        required: false
         type: choice
         description: Where to deploy
         default: 'stage'
         options:
           - stage
           - prod
+
   push:
     branches: [ "dev" ]
-    inputs:
-      destination:
-        required: false
-        default: 'stage'
-        options:
-          - stage
-          - prod
 
-  
+env: 
+  DEV_AUTO_RUN: 'true'
 
 jobs:
   build_back:
@@ -31,6 +26,20 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
 
-    - name: show env
-      run: echo "${{ github.event.inputs.destination }}"
+    - name: env mapping prod
+      if: ${{ (github.event.inputs.destination == 'prod' || (github.head_ref || github.ref_name) == 'dev' ) }}
+      run: |
+        echo "${{ env.DEV_AUTO_RUN }}"
+        echo ${{ github.head_ref }} ${{ github.ref_name }}
+        echo "${{ github.event.inputs.destination }}"
+        echo destination prod or github.head_ref github.ref_name dev
 
+    - name: show env
+      run: |
+        echo "$DEV_AUTO_RUN"
+        echo "${{ github.event.inputs.destination }}"
+        echo $DEV_AUTO_RUN
+        echo ${{ env.DEV_AUTO_RUN }}
+        echo ${{ github.head_ref }} ${{ github.ref_name }} 
+        echo ${{ (github.head_ref || github.ref_name) }}
+        
