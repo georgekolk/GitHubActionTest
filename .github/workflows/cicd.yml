@@ -42,4 +42,4 @@ jobs:
         echo ${{ env.DEV_AUTO_RUN }}
         echo ${{ github.head_ref }} ${{ github.ref_name }} 
         echo ${{ (github.head_ref || github.ref_name) }}
-
+        
